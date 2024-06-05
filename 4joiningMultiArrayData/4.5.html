@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.5</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+
+  <body>
+    <svg width="500" height="800"></svg>
+  </body>
+
+  <script>
+    //    Problem statement: Build on your answer from problem 4.4.
+    // If the age of the person if greater than 30, then make the rectangle red
+
+    var dataSet = [
+      {
+        name: "John",
+        age: 30,
+      },
+      {
+        name: "Emily",
+        age: 50,
+      },
+      {
+        name: "Michael",
+        age: 25,
+      },
+      {
+        name: "Sarah",
+        age: 15,
+      },
+      {
+        name: "David",
+        age: 80,
+      },
+    ];
+
+    d3.select("svg")
+      .selectAll("rect")
+      .data(dataSet)
+      .join("rect")
+      .attr("height", (d) => d.age)
+      .attr("width", 10)
+      .attr("x", (_, i) => i * 20)
+      .attr("y", (d) => 100 - d.age)
+      .attr("fill", (d) => (d.age > 30 ? "red" : "black"));
+  </script>
+</html>
